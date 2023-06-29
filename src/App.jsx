@@ -1,6 +1,5 @@
 import { useState } from "react"
 import confetti from "canvas-confetti"
-
 import { Square } from "./components/Square.jsx"
 import { TURNS } from "./constants.js"
 import { checkWinnerFrom, checkEndGame } from "./logic/board.js"
@@ -74,5 +73,5 @@ function App() {
   )
 }
 
-// minuto 53 https://www.youtube.com/watch?v=oWPFcuH8x6M
+// minuto 1hora y 1 min https://www.youtube.com/watch?v=oWPFcuH8x6M
 export default App

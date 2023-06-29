@@ -55,6 +55,12 @@ function App() {
     return null
   }
 
+  const resetGame = () => {
+    setBoard(Array(9).fill(null))
+    setTurn(TURNS.x)
+    setWinner(null)
+  }
+
   const updateBoard = (index) => {
     //no actualizamos  esta posicion
     //sin ya tiene algo.
@@ -70,12 +76,13 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
-    }
+    } //TODO: check if the game is over 
   }
 
   return (
     <main className='board'>
       <h1>Tic tac toe</h1>
+      <button onClick={resetGame}>Reset Game</button>
       <section className="game">
         {
           board.map((_, index) => {
@@ -100,9 +107,33 @@ function App() {
           {TURNS.o}
         </Square>
       </section>
+
+      {
+        winner !== null && (
+          <section className="winner">
+            <div className="text">
+              <h2>
+                {
+                  winner === false
+                    ? 'Empate'
+                    : 'ganó:'
+                }
+              </h2>
+
+              <header className="win">
+                {winner && <saquare>{winner}</saquare>}
+              </header>
+
+              <footer>
+                <button onClick={resetGame}>Empezar de nuevo</button>
+              </footer>
+            </div>
+          </section>
+        )
+      }
     </main>
   )
 }
 
-// minuto 35 https://www.youtube.com/watch?v=oWPFcuH8x6M
+// minuto 50 https://www.youtube.com/watch?v=oWPFcuH8x6M
 export default App

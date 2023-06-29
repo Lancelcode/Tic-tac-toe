@@ -98,5 +98,5 @@ function App() {
   )
 }
 
-// minuto 30 https://www.youtube.com/watch?v=oWPFcuH8x6M
+// minuto 35 https://www.youtube.com/watch?v=oWPFcuH8x6M
 export default App

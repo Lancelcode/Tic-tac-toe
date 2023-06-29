@@ -51,13 +51,14 @@ function App() {
           return boardToCheck[a]
       }
     }
+    //si no hay ganador.
     return null
   }
 
   const updateBoard = (index) => {
     //no actualizamos  esta posicion
     //sin ya tiene algo.
-    if(board[index]) return
+    if(board[index] || winner) return
     //Actualizar el tablero
     const newBoard = [...board]
     newBoard[index] = turn
@@ -65,6 +66,11 @@ function App() {
     //cambiar el turno
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
     setTurn(newTurn)
+    //revisar si hay un ganador
+    const newWinner = checkWinner(newBoard)
+    if (newWinner) {
+      setWinner(newWinner)
+    }
   }
 
   return (

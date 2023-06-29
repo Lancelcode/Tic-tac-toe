@@ -61,6 +61,13 @@ function App() {
     setWinner(null)
   }
 
+  const checkEndGame = (newBoard) => {
+    //Revisamos si hay un empate
+    //si no hay mas espacios vacios
+    //en el tablero
+    return newBoard.every((square) => square !== null)
+  }
+
   const updateBoard = (index) => {
     //no actualizamos  esta posicion
     //sin ya tiene algo.
@@ -76,7 +83,9 @@ function App() {
     const newWinner = checkWinner(newBoard)
     if (newWinner) {
       setWinner(newWinner)
-    } //TODO: check if the game is over 
+    } else if (checkEndGame(newBoard)) {
+      setWinner(false)//empate
+    }
   }
 
   return (
@@ -85,14 +94,14 @@ function App() {
       <button onClick={resetGame}>Reset Game</button>
       <section className="game">
         {
-          board.map((_, index) => {
+          board.map((square, index) => {
             return (
               <Square
                 key={index}
                 index={index}
                 updateBoard={updateBoard}
               >
-                {board[index]}
+                {square}
               </Square>
             )
           })
@@ -135,5 +144,5 @@ function App() {
   )
 }
 
-// minuto 50 https://www.youtube.com/watch?v=oWPFcuH8x6M
+// minuto 53 https://www.youtube.com/watch?v=oWPFcuH8x6M
 export default App

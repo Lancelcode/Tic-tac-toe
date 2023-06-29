@@ -1,8 +1,10 @@
 import { useState } from "react"
 import confetti from "canvas-confetti"
+
 import { Square } from "./components/Square.jsx"
 import { TURNS } from "./constants.js"
-import { checkWinnerFrom } from "./logic/board.js"
+import { checkWinnerFrom, checkEndGame } from "./logic/board.js"
+import { WinnerModal } from "./components/WinnerModal.jsx"
 function App() {
   const [board, setBoard] = useState(
     Array(9).fill(null)
@@ -17,16 +19,9 @@ function App() {
     setWinner(null)
   }
 
-  const checkEndGame = (newBoard) => {
-    //Revisamos si hay un empate
-    //si no hay mas espacios vacios
-    //en el tablero
-    return newBoard.every((square) => square !== null)
-  }
-
   const updateBoard = (index) => {
-    //no actualizamos  esta posicion
-    //sin ya tiene algo.
+    //no actualizamos esta posicion
+    //si ya tiene algo.
     if(board[index] || winner) return
     //Actualizar el tablero
     const newBoard = [...board]
@@ -74,29 +69,7 @@ function App() {
         </Square>
       </section>
 
-      {
-        winner !== null && (
-          <section className="winner">
-            <div className="text">
-              <h2>
-                {
-                  winner === false
-                    ? 'Empate'
-                    : 'ganó:'
-                }
-              </h2>
-
-              <header className="win">
-                {winner && <saquare>{winner}</saquare>}
-              </header>
-
-              <footer>
-                <button onClick={resetGame}>Empezar de nuevo</button>
-              </footer>
-            </div>
-          </section>
-        )
-      }
+      <WinnerModal resetGame={resetGame} winner={winner}/>
     </main>
   )
 }

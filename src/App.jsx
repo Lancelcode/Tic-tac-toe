@@ -27,6 +27,7 @@ function App() {
 
   const updateBoard = () => {
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
+    setTurn(newTurn)
   }
 
   return (

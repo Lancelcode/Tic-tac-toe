@@ -4,6 +4,8 @@ import { Square } from "./components/Square.jsx"
 import { TURNS } from "./constants.js"
 import { checkWinnerFrom, checkEndGame } from "./logic/board.js"
 import { WinnerModal } from "./components/WinnerModal.jsx"
+
+
 function App() {
   const [board, setBoard] = useState(
     Array(9).fill(null)
@@ -29,6 +31,8 @@ function App() {
     //cambiar el turno
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
     setTurn(newTurn)
+    //guarda aqui partida.
+    
     //revisar si hay un ganador
     const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {

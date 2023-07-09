@@ -29,17 +29,9 @@ function App() {
     //cambiar el turno
     const newTurn = turn === TURNS.x ? TURNS.o : TURNS.x
     setTurn(newTurn)
-<<<<<<< HEAD
-<<<<<<< HEAD
     //Guardar aqui partida
     window.localStorage.setItem('board', JSON.stringify(newBoard))
     window.localStorage.setItem('turn', turn)
-=======
-    //guarda aqui partida.
-    
->>>>>>> 265532e0edfd791af2d64d7bcb4654c0f385e437
-=======
->>>>>>> bc12cde08e691909a4623aaccaa9408c6cc03407
     //revisar si hay un ganador
     const newWinner = checkWinnerFrom(newBoard)
     if (newWinner) {

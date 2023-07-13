@@ -76,5 +76,5 @@ function App() {
   )
 }
 
-// minuto 1hora y 1 min https://www.youtube.com/watch?v=oWPFcuH8x6M
+// minuto 1hora y 6 min https://www.youtube.com/watch?v=oWPFcuH8x6M
 export default App
